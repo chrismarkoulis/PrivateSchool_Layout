@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Trainers</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    type="text/css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+  <!-- Animate js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <!-- Fonts-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" type="text/css" href="css/menu-style.css">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+      <div class="container">
+        <a class="navbar-brand">Private School Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#utilsNavbar"
+          aria-controls="utilsNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="utilsNavbar">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link nav-link-hover" href="mainMenu.html"><i class="fa fa-home"></i>Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-hover" href="courses.html"><i class="fa fa-book"></i> Courses</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link nav-link-hover" href="trainers.html"><i class="fa fa-user-circle-o"></i> Trainers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-hover" href="assignments.html"><i class="fa fa-thumb-tack"></i> Assignments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-hover" href="students.html"><i class="fa fa-graduation-cap"></i> Students</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle nav-link-hover" href="#" id="navbarDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item nav-link-hover" href="trainersPerCourse.html">Trainers per Course</a>
+                <a class="dropdown-item nav-link-hover" href="studentsPerCourse.html">Students per Course</a>
+                <a class="dropdown-item nav-link-hover" href="assignmentsPerCourse.html">Assignments per Course</a>
+                <a class="dropdown-item nav-link-hover" href="assignmentsPerStudent.html">Assignments per Student</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <main id="trainerMain">
+    <div class="container">
+      <div class="row padding-top">
+        <button type="button" id="add-btn" class="btn btn-success btn-sm" data-toggle="modal" data-target="#Modal"
+          data-message="Add a new Student"><i class="material-icons">&#xE147;</i> Add Trainer</button>
+          <button type="button" id="dlt-btn" class="btn btn-danger mr-auto btn-sm" data-toggle="modal" data-target="#DeleteModal">
+            <i class="material-icons">&#xE872;</i> <span>Delete Trainer</span></button>
+            <button type="button" id="edt-btn" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#EditModal">
+              <i class="fa fa-cog fa-fw" title="Edit"></i> <span>Edit Trainer</span></button>
+                <button type="button" id="upd-btn" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#updateModal">
+                  <i class="fa fa-refresh fa-fw" title="Edit"></i> <span>Update Trainer</span></button>
+
+      </div>
+
+      <!-- TABLE -->
+      <div class="row padding-top">
+        <table id="table" class="table table-hover table-info">
+            <caption class="text-warning"><br>List of Trainers<br><br>
+            </caption>
+          <thead class="thead-dark">
+            <tr>
+              <th class="font-weight-bold" scope="col"># ID</th>
+              <th class="font-italic" scope="col">First Name</th>
+              <th class="font-italic" scope="col">Last name</th>
+              <th class="font-italic" scope="col">Subject</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- table data from DB-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- add trainer Modal -->
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalLabel">New Trainer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="modalForm" method="POST">
+              <div class="form-group">
+                <label for="name" class="col-form-label">First Name:</label>
+                <input type="text" class="form-control" id="name" required>
+              </div>
+              <div class="form-group">
+                <label for="surname" class="col-form-label">Last Name:</label>
+                <input type="text" class="form-control" id="surname" required>
+              </div>
+              <div class="form-group">
+                <label for="dob" class="col-form-label">Subject:</label>
+                <input type="text" class="form-control" id="subject" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-success">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Modal HTML -->
+<div id="DeleteModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">						
+						<h4 class="modal-title">Delete Trainer</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<p>Are you sure you want to delete Trainer</p>
+						<p class="text-warning"><small>This action cannot be undone.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-danger" value="Delete">
+					</div>
+				</form>
+			</div>
+		</div>
+  </div>
+
+  <!-- edit modal -->
+  <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Trainer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="EditModalForm" method="POST">
+          <div class="form-group">
+            <label for="name" class="col-form-label">First Name:</label>
+            <input type="text" class="form-control" id="ediFirstName" required>
+          </div>
+          <div class="form-group">
+            <label for="surname" class="col-form-label">Last Name:</label>
+            <input type="text" class="form-control" id="editLastName" required>
+          </div>
+          <div class="form-group">
+            <label for="dob" class="col-form-label">Subject:</label>
+            <input type="text" class="form-control" id="editSubject" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-info">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- update modal -->
+ <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="updateModalLabel">Update Trainer</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form id="updateModalForm" method="POST">
+         <div class="form-group">
+           <label for="name" class="col-form-label">First Name:</label>
+           <input type="text" class="form-control" id="updateFirstName" required>
+         </div>
+         <div class="form-group">
+           <label for="surname" class="col-form-label">Last Name:</label>
+           <input type="text" class="form-control" id="updateLastName" required>
+         </div>
+         <div class="form-group">
+           <label for="dob" class="col-form-label">Subject:</label>
+           <input type="text" class="form-control" id="updateSubject" required>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+           <button type="submit" class="btn btn-primary">Update</button>
+         </div>
+       </form>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+  </main>
+
+
+  <footer class="bg-custom-ft">
+    <div class="container">
+      <div class="row padding-top">
+        <div class="col-md-12 text-center">
+          <p>AFDEmp Coding Bootcamp/Front-end/Assignment_1</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!--JQUERY-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!--BOOTSTRAP-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

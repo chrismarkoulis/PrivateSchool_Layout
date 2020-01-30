@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header.container {
+    height: 100em;
+}
+
+.bg-custom {
+    background-color: #30393B;
+    box-shadow: 0px 5px 10px 0px rgb(2, 115, 243);
+    color: white;
+}
+
+.bg-custom-ft {
+    background-color: lightslategray;
+    color:white
+}
+
+.nav-link-hover {
+    transition: all 0.2s;
+    
+}
+
+.nav-link-hover:hover {
+    transform: scale(1.1, 1.1);
+    
+}
+
+ .padding-top {
+    padding-top: 40px;
+}
+
+h1, h2 {
+    display: block;
+    margin: 0 auto;
+}
+
+.main-item {
+    margin: 0.25rem;
+    padding: 1rem;
+    background-color: darkgrey;
+    /* height: 15rem; */
+}
+
+.jumbotron-fix {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+
+.fa-edit {
+    color: #30393B;
+}
+
+.bgheader {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.0);
+}
+
+#indexMain {
+    background: lightslategray;
+}
+
+#studMain {
+    background: lightslategray;
+}
+
+#table {
+    background-color: rgba(255, 255, 255, 0.9);
+    
+
+}
+
+#trainerMain {
+    background: lightslategray;
+}
+
+#coursesMain {
+    background:  lightslategray;
+}
+
+main {
+    min-height: 100vh;
+}
+
+
+#assignMain{
+    background:  lightslategray;
+}
+
+#indexMain h1, h2 {
+
+    /* color: goldenrod; */
+   /* color: cornflowerblue; */
+   
+    color: lightgray;
+    text-shadow: 0px 5px 15px rgba(0,0,0,1), 5px 0px 150px rgba(0,0,0,1), 0px -5px 15px rgba(0,0,0,1), -5px 0px 15px rgba(0,0,0,1);
+}
+
+#assignPerStudent {
+    background-color: lightslategray;
+    
+}
